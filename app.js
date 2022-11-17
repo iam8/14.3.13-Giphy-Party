@@ -18,4 +18,6 @@ async function req() {
             api_key: "g34JBy4NPfyJgqBiQ4LwU0bQFXySDlg0",
             q: "koala"
         }});
+
+        console.log(getRes.data.data[0]);
 }
