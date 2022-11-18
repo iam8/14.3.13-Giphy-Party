@@ -16,7 +16,9 @@ $form.on("submit", async function(evt) {
     const gifURL = await getGifURL($searchInput.val());
     $searchInput.val("");
 
-    $gifSection.append($("<img>", {src: gifURL}));
+    const $gifDiv = $("<div>", {class: "single-gif-container"});
+    $gifDiv.append($("<img>", {src: gifURL}));
+    $gifSection.append($gifDiv);
 
 })
 
