@@ -8,15 +8,17 @@ const $form = $("#search-form");
 const $searchInput = $("#search-input");
 
 // Add event listener for submitting the form
-$form.on("submit", function(evt) {
+$form.on("submit", async function(evt) {
     evt.preventDefault();
 
-    getGifURL($searchInput.val());
+    const gifURL = await getGifURL($searchInput.val());
     $searchInput.val("");
+
+    $("#giphy-section").append($("<img>", {src: gifURL}));
 
 })
 
-/** Search for a random GIF using the given search term and return its URL. */
+/** Search for a random GIF using the given search term and return its original URL. */
 async function getGifURL(searchTerm) {
     const getRes = await axios.get("https://api.giphy.com/v1/gifs/search", {
         params: {
@@ -28,7 +30,7 @@ async function getGifURL(searchTerm) {
 
     if (foundGifs.length > 0) {
         const randIdx = Math.floor(Math.random() * foundGifs.length);
-        return foundGifs[randIdx].url;
+        return foundGifs[randIdx].images.original.url;
     }
 
     return null;
