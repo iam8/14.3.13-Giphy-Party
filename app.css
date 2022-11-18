@@ -1,0 +1,20 @@
+/* Ioana Alex Mititean */
+/* 11/18/22 */
+/* 14.3.13: Giphy Party Exercise */
+
+img {
+    width: 100%;
+}
+
+.single-gif-container {
+    background-color: green;
+    width: 30%;
+}
+
+#gif-section {
+    background-color: lightblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
