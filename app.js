@@ -6,7 +6,8 @@ console.log("Let's get this party started!");
 
 const $form = $("#search-form");
 const $searchInput = $("#search-input");
-const $removeBtn = $("#remove-images");
+const $removeBtn = $("#remove-gifs");
+const $gifSection = $("#gif-section");
 
 // Add event listener for submitting the form
 $form.on("submit", async function(evt) {
@@ -15,7 +16,7 @@ $form.on("submit", async function(evt) {
     const gifURL = await getGifURL($searchInput.val());
     $searchInput.val("");
 
-    $("#giphy-section").append($("<img>", {src: gifURL}));
+    $gifSection.append($("<img>", {src: gifURL}));
 
 })
 
@@ -39,6 +40,6 @@ async function getGifURL(searchTerm) {
 
 /** Remove all GIFs from the page when the 'Remove images' button is clicked. */
 $removeBtn.on("click", function() {
-    $("#giphy-section").empty();
+    $gifSection.empty();
 })
 
