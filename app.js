@@ -11,17 +11,25 @@ const $searchInput = $("#search-input");
 $form.on("submit", function(evt) {
     evt.preventDefault();
 
-    searchForGif($searchInput.val());
+    getGifURL($searchInput.val());
     $searchInput.val("");
 
 })
 
-async function searchForGif(searchTerm) {
+/** Search for a random GIF using the given search term and return its URL. */
+async function getGifURL(searchTerm) {
     const getRes = await axios.get("https://api.giphy.com/v1/gifs/search", {
         params: {
             api_key: "g34JBy4NPfyJgqBiQ4LwU0bQFXySDlg0",
             q: searchTerm
         }});
 
-        console.log(getRes.data.data[0]);
+    const foundGifs = getRes.data.data;
+
+    if (foundGifs.length > 0) {
+        const randIdx = Math.floor(Math.random() * foundGifs.length);
+        return foundGifs[randIdx].url;
+    }
+
+    return null;
 }
