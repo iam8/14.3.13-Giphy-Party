@@ -9,17 +9,20 @@ const $searchInput = $("#search-input");
 const $removeBtn = $("#remove-gifs");
 const $gifSection = $("#gif-section");
 
-// Add event listener for submitting the form
+/** When form is submitted, add a GIF to the page (if found). */
 $form.on("submit", async function(evt) {
     evt.preventDefault();
 
     const gifURL = await getGifURL($searchInput.val());
     $searchInput.val("");
 
-    const $gifDiv = $("<div>", {class: "single-gif-container"});
-    $gifDiv.append($("<img>", {src: gifURL}));
-    $gifSection.append($gifDiv);
-
+    if (gifURL) {
+        const $gifDiv = $("<div>", {class: "single-gif-container"});
+        $gifDiv.append($("<img>", {src: gifURL}));
+        $gifSection.append($gifDiv);
+    } else {
+        alert("No GIF was found for that search term.");
+    }
 })
 
 /** Search for a random GIF using the given search term and return its original URL. */
