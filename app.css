@@ -2,19 +2,50 @@
 /* 11/18/22 */
 /* 14.3.13: Giphy Party Exercise */
 
+body {
+    background-image: linear-gradient(aqua, green);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    font-weight: bold;
+}
+
 img {
     width: 100%;
+    border: 3px solid black;
 }
 
 .single-gif-container {
-    background-color: green;
     width: 30%;
+    margin: 10px 0px;
+}
+
+#search-form {
+    margin: 20px 0px;
+}
+
+#search-input {
+    width: 400px;
+}
+
+#submit-input {
+    background-color: lightgreen;
+}
+
+#remove-gifs {
+    background-color: red;
 }
 
 #gif-section {
-    background-color: lightblue;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-content: space-around;
+    align-items: center;
 }
